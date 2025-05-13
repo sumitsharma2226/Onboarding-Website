@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom';
+import CandidateIcon from '../assets/candidate.svg';
+import ClientIcon from '../assets/client.svg';
 
 const Home = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const sections = [
         {
             title: 'For Candidates',
-            icon: '📇',
+            icon: CandidateIcon,
             features: [
                 'Effortless Profile Creation',
                 'Secure Document Upload',
@@ -15,7 +17,7 @@ const Home = () => {
         },
         {
             title: 'For Clients',
-            icon: '📋',
+            icon: ClientIcon,
             features: [
                 'Manage Candidate Pipelines',
                 'Automate Client Agreements',
@@ -25,12 +27,6 @@ const Home = () => {
         }
     ];
 
-    const footerLinks = {
-        Company: ['About Us', 'Careers', 'Contact'],
-        Product: ['Features', 'Pricing', 'Integrations'],
-        Resources: ['Blog', 'Help Center', 'Support'],
-        Legal: ['Privacy Policy', 'Terms of Service', 'Security']
-    };
     return (
         <>
             <section className="text-center py-16 px-4 container mx-auto px-4">
@@ -40,14 +36,14 @@ const Home = () => {
                     Streamline candidate profiles and client engagements with OnboardEasy's intuitive platform.
                 </p>
             </section>
-            
+
             <div className="flex flex-col md:flex-row justify-center items-start gap-8 px-4 md:px-0 max-w-6xl mx-auto">
                 {sections.map(({ title, icon, features }) => (
                     <div key={title} className="bg-white rounded-xl shadow-md p-6 w-full md:w-1/3 hover:shadow-lg transition">
-                        <div className="w-14 h-14 mb-4 mx-auto rounded-full bg-indigo-100 flex items-center justify-center text-2xl">
-                            {icon}
+                        <div className="w-14 h-14 mb-4 mx-auto rounded-full bg-indigo-100 flex items-center justify-center">
+                            <img src={icon} alt={`${title} icon`} className="w-8 h-8 object-contain" />
                         </div>
-                        <h2 className="text-center text-lg font-semibold mb-2">{title}</h2>
+                        <h2 className="text-lg font-semibold mb-2 text-brand-dark">{title}</h2>
                         <ul className="text-sm text-gray-600 list-disc list-inside space-y-1">
                             {features.map((item) => (
                                 <li key={item}>{item}</li>
@@ -59,7 +55,7 @@ const Home = () => {
 
             {/* CTA */}
             <div className="text-center mt-12">
-                <h3 className="mb-4 font-medium">Ready to get started?</h3>
+                <h3 className="mb-4 font-medium text-brand-dark">Ready to get started?</h3>
                 <div className="space-x-4">
                     <button className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition" onClick={() => navigate('/candidate-register')}>
                         New Candidate
@@ -69,22 +65,9 @@ const Home = () => {
                     </button>
                 </div>
             </div>
-
-            {/* Footer */}
-            <footer className="mt-20 bg-gray-50 py-12 text-sm">
-                <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
-                    {Object.entries(footerLinks).map(([section, links]) => (
-                        <div key={section}>
-                            <h4 className="font-semibold mb-2">{section}</h4>
-                            <ul className="space-y-1 text-gray-600">
-                                {links.map((link) => (
-                                    <li key={link}>{link}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
-                <div className="mt-8 text-center text-gray-500 text-xs">
+            <footer className="py-4 mt-4 text-sm">
+                <hr />
+                <div className="mt-8 text-center text-brand-dark text-sm">
                     © 2025 OnboardEasy • Privacy Policy • Terms of Service
                 </div>
             </footer>

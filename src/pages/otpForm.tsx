@@ -4,16 +4,17 @@ import { useNavigate } from 'react-router-dom';
 const OTPForm = () => {
   const [otp, setOtp] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const storedOtp = localStorage.getItem('otp');
-    
+
     if (otp === storedOtp) {
       alert('OTP verified successfully!');
-      navigate('/dashboard'); 
+      localStorage.setItem('isVerified', 'true');
+      navigate('/dashboard');
     } else {
       setError('Invalid OTP. Please try again.');
     }
@@ -38,7 +39,10 @@ const OTPForm = () => {
           {error && <p className="text-red-500 text-sm">{error}</p>}
         </div>
 
-        <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition">
+        <button
+          type="submit"
+          className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition"
+        >
           Verify OTP
         </button>
       </form>
