@@ -44,10 +44,10 @@ const PanelHeader = () => {
             </nav>
 
             <div className="relative">
-                <button onClick={toggleDropdown} className="flex items-center space-x-2">
+                <button onClick={toggleDropdown} className="flex items-center space-x-2 bg-black">
                     {profileImage ? (
                         <img
-                            src={profileImage} 
+                            src={profileImage || "https://i.pravatar.cc/150?img=3"} 
                             alt="Profile"
                             className="w-10 h-10 rounded-full border-2 border-white object-cover"
                         />
